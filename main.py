@@ -5,18 +5,18 @@ import functions
 def main():
 
     arguments = sys.argv
-    arg_one = str(arguments[1])
-    file_name = str(arguments[2])
+    try:
+        if arguments[1] == "--read":
+            functions.read_file(arguments[2])
+        elif arguments[1] == "--write":
+            functions.write_file(arguments[2])
+        elif arguments[1] == "--append":
+            functions.append_file(arguments[2])
+        elif arguments[1] == "--help":
+            print("To read a file use --read followed by a file name, to write a new file use --write followed by a file name, and to edit a file already exisiting use --append followed by the file name.")
+    except:
+        print("You must supply at'least one argument, for help use --help")
+        
 
-    if arg_one == "--read":
-        functions.read_file(file_name)
-    elif arg_one == "--write":
-        functions.write_file(file_name)
-    elif arg_one == "--append":
-        functions.append_file(file_name)
-    elif arg_one == "--help":
-        print("To read a file use --read followed by a file name, to write a new file use --write followed by a file name, and to edit a file already exisiting use --append followed by the file name.")
-    elif arg_one != "--read" or "--write" or "--append" or "--help":
-        print("You must supply at'least one argument, to get help use --help")
 
 main()
