@@ -1,4 +1,6 @@
 import os
+import paramiko
+import base64
 
 
 # read a files contents
@@ -37,3 +39,19 @@ def append_file(file_name):
         print(file_name + " successfully edited and saved.")
     elif save_option == "no":
         os.remove(file_name)
+
+
+def read_remote_file():
+    rsa_key = input("Where is your RSAKey: ")
+    key = paramiko.RSAKey(data=base64.decodestring(rsa_key))
+    client = paramiko.SSHClient()
+    server = input("What is the url or ip of the server you are tyring to connect to: ")
+    client.get_host_keys().add(server, 'ssh-rsa', key)
+    username = input("Username please: ")
+    password = input("Password please: ")
+    client.connect(server, username=username, password=password)
+    sftp_client = client.open_sftp()
+    file_name = input("Path to the file you are trying to read: ")
+    remote_file = sftp_client.open(file_name)
+    read_file(remote_file)
+    client.close()
