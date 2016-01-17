@@ -17,6 +17,7 @@ def write_file(file_name):
     if save_option == "yes":
         file_to_write.write(text_to_write)
         file_to_write.close()
+        print("New file written: " + file_name)
     elif save_option == "no":
         os.remove(file_name)
 
@@ -33,5 +34,6 @@ def append_file(file_name):
     if save_option == "yes":
         file_to_write.write(text_to_write)
         file_to_write.close()
+        print(file_name + " successfully edited and saved.")
     elif save_option == "no":
         os.remove(file_name)

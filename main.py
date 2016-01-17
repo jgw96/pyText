@@ -16,5 +16,7 @@ def main():
         functions.append_file(file_name)
     elif arg_one == "--help":
         print("To read a file use --read followed by a file name, to write a new file use --write followed by a file name, and to edit a file already exisiting use --append followed by the file name.")
+    elif arg_one != "--read" or "--write" or "--append" or "--help":
+        print("You must supply at'least one argument, to get help use --help")
 
 main()
