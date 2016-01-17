@@ -11,7 +11,7 @@ def main():
         functions.write_file(arguments[2])
     elif arguments[1] == "--append":
         functions.append_file(arguments[2])
-    elif arguments[1] == "remote":
+    elif arguments[1] == "--read-remote":
         functions.read_remote_file()
     elif arguments[1] == "--help":
         print(
